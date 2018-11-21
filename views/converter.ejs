@@ -1,0 +1,20 @@
+<html>
+    <% include header %>
+    <h4>BTC KRW Converter</h4>
+    <input type="text" id="btc" value="1" onkeyup="btckrw();"> = 
+    <input type="text" id="krw" value="<%= lastPrice %>" onkeyup="krwbtc();">
+    <script>
+        function btckrw(){
+            var market_price = <%= lastPrice %>;
+            var btc_value = document.getElementById("btc").value;
+            var calculation = btc_value * market_price;
+            document.getElementById("krw").value = calculation.toFixed(2);
+        }
+        function krwbtc(){
+            var market_price = <%= lastPrice %>;
+            var btc_value = document.getElementById("krw").value;
+            var calculation = btc_value / market_price;
+            document.getElementById("btc").value = calculation.toFixed(8);
+        }
+    </script>
+</html>
